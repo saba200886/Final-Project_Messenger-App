@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/drawable/login_field_style.xml" value="0.1945" />
+        <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/drawable/login_filed_style.xml" value="0.1945" />
+        <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/drawable/login_secondbutton_style.xml" value="0.1945" />
+        <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout/authorization.xml" value="0.20416666666666666" />
+        <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout/login_page.xml" value="0.20416666666666666" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout/profile_page.xml" value="0.20416666666666666" />
       </map>
     </option>
