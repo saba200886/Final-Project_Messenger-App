@@ -12,13 +12,13 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.User
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
 
-        val database = Firebase.database
+       /* val database = Firebase.database
         val myRef = database.getReference("message")
         val userReference = database.getReference("UserList")
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         })
-
+*/
 
     }
 }
