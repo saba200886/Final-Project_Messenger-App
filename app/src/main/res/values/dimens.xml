@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="login_field_radius">30dp</dimen>
+    <dimen name="login_field_radius">20dp</dimen>
     <dimen name="login_second_button_radius">10dp</dimen>
     <dimen name="login_second_button_frame">2dp</dimen>
 </resources>
