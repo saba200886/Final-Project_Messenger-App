@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/drawable/login_field_style.xml" value="0.1575" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/drawable/sign_out_style.xml" value="0.1575" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/activity_login.xml" value="0.5" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/activity_profile.xml" value="0.75" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/activity_registration.xml" value="0.18" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/authorization.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/profile_page.xml" value="0.1" />
       </map>
