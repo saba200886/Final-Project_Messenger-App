@@ -29,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val intent = Intent(this, MainPageActivity::class.java)
+        startActivity(intent)
+
         initView()
 
        /* val database = Firebase.database

@@ -6,4 +6,6 @@
     <string name="not_registered">Not registered?</string>
     <string name="sign_up">SIGN UP</string>
     <string name="login_image_view">login_image_view</string>
+    <string name="search">Search</string>
+    <string name="floating_add_button">floating_add_button</string>
 </resources>
