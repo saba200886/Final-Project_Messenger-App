@@ -67,7 +67,6 @@
         android:text="SIGN oUT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_button"
-        app:layout_constraintop_toBottomOf="@+id/update_button" />
+        app:layout_constraintTop_toBottomOf="@+id/update_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
