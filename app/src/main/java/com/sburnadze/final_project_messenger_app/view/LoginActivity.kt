@@ -1,5 +1,6 @@
 package com.sburnadze.final_project_messenger_app.view
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +28,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val intent = Intent(this, MainPageActivity::class.java)
+        startActivity(intent)
 
         initView()
 
