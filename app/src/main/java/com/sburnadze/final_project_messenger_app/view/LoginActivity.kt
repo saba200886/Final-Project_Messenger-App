@@ -1,5 +1,6 @@
 package com.sburnadze.final_project_messenger_app.view
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -100,11 +101,10 @@ class LoginActivity : AppCompatActivity() {
 
     //open registration page for user to register
     private fun openRegistrationPage() {
-        finish()
+        //finish()
 
         //TODO
-     //   val intent = Intent(this, SignUpActivity::class::java)
-     //   startActivity(intent)
+     startActivity(Intent(this, SignUpActivity::class.java))
     }
 
 }
