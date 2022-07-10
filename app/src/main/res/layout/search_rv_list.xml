@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/list_horizontal_margins"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/search_list_padding_top">
+
+
+    <ImageView
+        android:id="@+id/search_list_imageView"
+        android:layout_width="@dimen/rv_list_avatar_size"
+        android:layout_height="@dimen/rv_list_avatar_size"
+        android:adjustViewBounds="true"
+        android:gravity="center_vertical"
+        android:scaleType="fitCenter"
+        android:src="@drawable/avatar_image_placeholder"
+        android:contentDescription="@string/search_list_imageview" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/rv_list_item_left_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/search_list_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/search_page_name_top_margin"
+            android:text="@string/default_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/big_text_size" />
+
+        <TextView
+            android:id="@+id/search_list_profession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/default_profession" />
+
+    </LinearLayout>
+
+</LinearLayout>

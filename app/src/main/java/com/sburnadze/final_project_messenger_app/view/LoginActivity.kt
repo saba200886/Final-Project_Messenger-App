@@ -6,15 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.AuthorizationModel
 import com.sburnadze.final_project_messenger_app.R
-import java.util.Observer
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,9 +22,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        val intent = Intent(this, MainPageActivity::class.java)
-        startActivity(intent)
 
         initView()
 
@@ -104,10 +95,9 @@ class LoginActivity : AppCompatActivity() {
 
     //open registration page for user to register
     private fun openRegistrationPage() {
-        //finish()
+        finish()
 
-        //TODO
-     startActivity(Intent(this, SignUpActivity::class.java))
+        startActivity(Intent(this, SignUpActivity::class.java))
     }
 
 }
