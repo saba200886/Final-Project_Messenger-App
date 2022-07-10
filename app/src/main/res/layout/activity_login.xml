@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.LoginActivity">
 
-
-
     <ImageView
         android:id="@+id/login_image_view"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/login_avatar_size"
+        android:layout_height="@dimen/login_avatar_size"
+        android:layout_marginTop="@dimen/login_avatar_top_margin"
         android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,9 +20,9 @@
 
     <EditText
         android:id="@+id/login_username_edit_text"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/login_text_field_margin_top"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_nickname"
@@ -36,9 +34,9 @@
 
     <EditText
         android:id="@+id/login_password_edit_text"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/login_password_margin_top"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_password"
@@ -49,9 +47,9 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/login_button_width"
+        android:layout_height="@dimen/login_button_height"
+        android:layout_marginTop="@dimen/login_button_margin_top"
         android:backgroundTint="@color/login_button_color"
         android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/not_registered"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/login_registration_text_bottom_margin"
         app:layout_constraintBottom_toTopOf="@+id/login_page_signup_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,9 +69,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_page_signup_button"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="@dimen/login_signUp_button_width"
+        android:layout_height="@dimen/login_signUp_button_height"
+        android:layout_marginBottom="@dimen/login_signUp_button_bottom_margin"
         android:text="@string/sign_up"
         android:background="@color/login_second_button_color"
         app:layout_constraintBottom_toBottomOf="parent"
