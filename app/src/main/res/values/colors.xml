@@ -15,4 +15,5 @@
     <color name="add_button_color">#4035F6</color>
     <color name="bottom_menu_border_color">#636161</color>
     <color name="message_bar_color">#E4DFDF</color>
+    <color name="received_message">#BBC0E3</color>
 </resources>
