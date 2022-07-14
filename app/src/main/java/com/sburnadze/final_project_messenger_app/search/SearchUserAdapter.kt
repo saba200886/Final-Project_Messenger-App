@@ -1,4 +1,4 @@
-package com.sburnadze.final_project_messenger_app.adapters
+package com.sburnadze.final_project_messenger_app.search
 
 import android.content.Context
 import android.view.LayoutInflater

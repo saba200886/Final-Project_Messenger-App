@@ -36,4 +36,5 @@
     <dimen name="main_page_appBar_height">180dp</dimen>
     <dimen name="search_field_horizontal_margins">20dp</dimen>
     <dimen name="main_page_fragment_linear_padding_bottom">10dp</dimen>
+    <dimen name="search_view_margin_horizontal">40dp</dimen>
 </resources>
