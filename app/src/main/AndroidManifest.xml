@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalprojectmessengerapp">
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".search.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainPageActivity"
