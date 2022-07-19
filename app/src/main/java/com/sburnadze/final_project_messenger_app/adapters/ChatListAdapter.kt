@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sburnadze.final_project_messenger_app.R
-import com.sburnadze.final_project_messenger_app.model.Message
+import com.sburnadze.final_project_messenger_app.model.ChatMessage
 
-class ChatListAdapter(private val context: Context?, var chat : MutableList<Message>, private val user: String?):
+class ChatListAdapter(private val context: Context?, var chat : MutableList<ChatMessage>, private val user: String?):
     RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,7 +29,7 @@ class ChatListAdapter(private val context: Context?, var chat : MutableList<Mess
 
     override fun getItemViewType(position: Int): Int {
         val message = chat[position]
-        return if(message.sender?.id.equals(user)){
+        return if(message.sender.equals(user)){
             SENT
         } else{
             RECEIVED
