@@ -13,7 +13,7 @@
             android:name=".view.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".search.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainPageActivity"
