@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var chat: MutableList<ChatMessage>
     private lateinit var currId: String
     private lateinit var secondId: String
+    private lateinit var image: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -54,6 +56,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun showMessages(){
+        image = findViewById(R.id.image)
         recyclerView = findViewById(R.id.chat_recycler_view)
         chat = mutableListOf()
         chatViewModel.loadMessages(chat, currId, secondId)
