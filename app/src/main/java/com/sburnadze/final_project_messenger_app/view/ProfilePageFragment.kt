@@ -10,12 +10,14 @@ import com.sburnadze.final_project_messenger_app.R
 
 class ProfilePageFragment : Fragment() {
 
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_proflie_page, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile_page, container, false)
     }
+
 
 }

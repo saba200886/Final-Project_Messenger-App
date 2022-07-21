@@ -105,4 +105,5 @@
     <string name="default_last_message">asdasd asdasdasd asdasd laksnflkasn flaksnflaksnf lasnflaksnfalsnfalksnf</string>
     <string name="main_page_list_imageview">main_page_list_imageView</string>
     <string name="default_profession">Default Profession</string>
+    <string name="hint">message</string>
 </resources>

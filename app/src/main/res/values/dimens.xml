@@ -36,5 +36,15 @@
     <dimen name="main_page_appBar_height">180dp</dimen>
     <dimen name="search_field_horizontal_margins">20dp</dimen>
     <dimen name="main_page_fragment_linear_padding_bottom">10dp</dimen>
+    <dimen name="app_bar_height">130dp</dimen>
+    <dimen name="back_button_size">25dp</dimen>
+    <dimen name="side_padding">15dp</dimen>
+    <dimen name="name_size">40dp</dimen>
+    <dimen name="what_i_do_size">15dp</dimen>
+    <dimen name="toolbar_height">80dp</dimen>
+    <dimen name="collapse_height">110dp</dimen>
+    <dimen name="image">60dp</dimen>
+    <dimen name="image_padding">15dp</dimen>
+    <dimen name="max_text_width">290dp</dimen>
     <dimen name="search_view_margin_horizontal">40dp</dimen>
 </resources>
