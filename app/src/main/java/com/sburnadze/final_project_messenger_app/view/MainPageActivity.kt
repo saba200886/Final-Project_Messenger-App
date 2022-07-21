@@ -3,6 +3,8 @@ package com.sburnadze.final_project_messenger_app.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sburnadze.final_project_messenger_app.R
@@ -26,6 +28,7 @@ class MainPageActivity : AppCompatActivity() {
 
         viewPager = findViewById(R.id.main_page_fragmentViewer)
         viewPager.adapter = ViewPagerAdapter(this)
+
 
         Log.d("asdasd", "first")
         //main page should open by default

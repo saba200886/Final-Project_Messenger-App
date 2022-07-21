@@ -95,8 +95,6 @@ class LoginActivity : AppCompatActivity() {
 
     //open registration page for user to register
     private fun openRegistrationPage() {
-        finish()
-
         startActivity(Intent(this, SignUpActivity::class.java))
     }
 

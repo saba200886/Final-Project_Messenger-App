@@ -1,21 +1,19 @@
 package com.sburnadze.final_project_messenger_app
 
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.User
 import com.sburnadze.final_project_messenger_app.view.LoginActivity
+import com.sburnadze.final_project_messenger_app.view.MainPageActivity
+import com.sburnadze.final_project_messenger_app.view.ProfilePageFragment
 
 class AuthorizationModel(private val act: Activity) {
     private var firebaseAuth = FirebaseAuth.getInstance()
@@ -28,7 +26,7 @@ class AuthorizationModel(private val act: Activity) {
             .addOnCompleteListener(act) { task ->
                 if (task.isSuccessful) {
                     Log.d("Authorizationmessage", "signInWithEmail:success")
-                    act.startActivity(Intent(act, LoginActivity::class.java))
+                    act.startActivity(Intent(act, MainPageActivity::class.java))
                 } else {
                     Log.w("Authorizationmessage", "signInWithEmail:failure", task.exception)
                     Toast.makeText(act,"Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -44,7 +42,7 @@ class AuthorizationModel(private val act: Activity) {
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
                     if (userId != null) {
-                        users.child(userId).setValue(User(name, pass, whatIDo, image))
+                        users.child(userId).setValue(User(name, pass, whatIDo, image, userId))
                     }
                     act.startActivity(Intent(act, LoginActivity::class.java))
                 } else {

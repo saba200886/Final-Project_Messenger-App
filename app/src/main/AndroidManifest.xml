@@ -16,6 +16,9 @@
             android:name=".search.SearchActivity"
             android:exported="false" />
         <activity
+            android:name=".view.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainPageActivity"
             android:exported="false" />
         <activity
