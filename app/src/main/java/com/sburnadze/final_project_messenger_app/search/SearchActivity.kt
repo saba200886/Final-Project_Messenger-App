@@ -57,6 +57,7 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun searchUser() {
+        Log.d("sadaa","error")
         RxTextView.textChangeEvents(searchField).debounce(1000, TimeUnit.MILLISECONDS)
             .subscribe{
                 val currText = searchField.text.toString()

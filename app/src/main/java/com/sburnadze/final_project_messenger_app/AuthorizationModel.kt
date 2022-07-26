@@ -44,7 +44,7 @@ class AuthorizationModel(private val act: Activity) {
                     if (userId != null) {
                         users.child(userId).setValue(User(name, pass, whatIDo, image, userId))
                     }
-                    act.startActivity(Intent(act, LoginActivity::class.java))
+                    act.startActivity(Intent(act, MainPageActivity::class.java))
                 } else {
                     Log.w("Authorizationmessage", "signUpWithEmail:failure", task.exception)
                     Toast.makeText(act,"Authentication failed.", Toast.LENGTH_SHORT).show()
