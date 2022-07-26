@@ -17,8 +17,8 @@ class SignUpActivity: AppCompatActivity() {
     private lateinit var image: ImageView
     private lateinit var signUpButton: Button
     private lateinit var authorizationViewModel: AuthorizationModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_registration)
         initView()
     }

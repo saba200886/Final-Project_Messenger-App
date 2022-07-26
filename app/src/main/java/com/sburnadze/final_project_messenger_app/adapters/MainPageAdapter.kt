@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.LastMessage
+import com.sburnadze.final_project_messenger_app.view.ChatActivity
 
 class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMessage>): RecyclerView.Adapter<ConversationViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversationViewHolder {
@@ -36,8 +37,8 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
 
         //if message item is clicked, chat page should open
         holder.item.setOnClickListener{
-        //    val startChat = Intent(holder.item.context, ChatActivity::class.java)
-        //    holder.item.context.startActivity(startChat)
+            val startChat = Intent(holder.item.context, ChatActivity::class.java)
+            holder.item.context.startActivity(startChat)
         }
     }
 

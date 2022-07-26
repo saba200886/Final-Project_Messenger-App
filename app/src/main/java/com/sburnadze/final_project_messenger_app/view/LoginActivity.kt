@@ -24,32 +24,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         initView()
-
-       /* val database = Firebase.database
-        val myRef = database.getReference("message")
-        val userReference = database.getReference("UserList")
-
-
-        myRef.setValue("Hello, World1!")
-
-        userReference.push().key?.let{
-            userReference.child(it).setValue(User("saba","saba1234", "auditor"))
-        }
-
-
-
-        userReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //val value = dataSnapshot.getValue<String>()
-                Log.d(TAG, "count is:" + dataSnapshot.children.count())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
-*/
-
     }
 
     private fun initView() {

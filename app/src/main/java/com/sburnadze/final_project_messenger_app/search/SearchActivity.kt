@@ -49,7 +49,6 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
         searchUserAdapter = SearchUserAdapter(this, users)
         usersRv.adapter = searchUserAdapter
 
-
         searchField = findViewById(R.id.activity_search_search)
         searchUser()
     }
@@ -57,18 +56,20 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun searchUser() {
-        Log.d("sadaa","error")
         RxTextView.textChangeEvents(searchField).debounce(1000, TimeUnit.MILLISECONDS)
-            .subscribe{
-                val currText = searchField.text.toString()
-                users.clear()
-                searchUserAdapter.notifyDataSetChanged()
+            .subscribe {
+                runOnUiThread {
+                    val currText = searchField.text.toString()
+                    users.clear()
+                    searchUserAdapter.notifyDataSetChanged()
 
-                if (currText.length > 2){
-                    findSearchedUser(currText)
+                    if (currText.length > 2) {
+                        findSearchedUser(currText)
+                    }
                 }
             }
     }
+
 
     private fun findSearchedUser(currText: String) {
         searchViewModel.searchUserByName(currText)
