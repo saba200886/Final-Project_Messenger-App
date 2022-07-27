@@ -3,10 +3,14 @@ package com.sburnadze.final_project_messenger_app.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sburnadze.final_project_messenger_app.ChatModel
@@ -26,6 +30,7 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        Log.d("inat", "success")
         init()
     }
 
@@ -39,11 +44,11 @@ class ChatActivity : AppCompatActivity() {
 
         showMessages()
 
-        findViewById<Button>(R.id.back_icon).setOnClickListener{
+        findViewById<AppCompatImageView>(R.id.back_icon).setOnClickListener{
             startActivity(Intent(this, MainPageActivity::class.java))
         }
 
-        findViewById<Button>(R.id.send_button).setOnClickListener{
+        findViewById<AppCompatImageButton>(R.id.send_button).setOnClickListener{
             val message = editText.text.toString()
             if(message.isEmpty()){
                 Toast.makeText(this,"write message", Toast.LENGTH_SHORT).show()
