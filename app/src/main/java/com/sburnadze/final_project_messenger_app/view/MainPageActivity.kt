@@ -31,8 +31,12 @@ class MainPageActivity : AppCompatActivity() {
         bottomNavigationView.background = null
 
         floatingButton = findViewById(R.id.floating_button)
+
+        val currUser = intent.getStringExtra("currUserId").toString()
         floatingButton.setOnClickListener{
-            startActivity(Intent(this, SearchActivity::class.java))
+            startActivity(Intent(this, SearchActivity::class.java).apply {
+                putExtra("currUserId", currUser)
+            })
         }
 
         viewPager = findViewById(R.id.main_page_fragmentViewer)

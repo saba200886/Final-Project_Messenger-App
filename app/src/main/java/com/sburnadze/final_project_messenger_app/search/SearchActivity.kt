@@ -3,10 +3,7 @@ package com.sburnadze.final_project_messenger_app.search
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
@@ -46,7 +43,9 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
         users = arrayListOf()
 
         usersRv = findViewById(R.id.activity_search_rv)
-        searchUserAdapter = SearchUserAdapter(this, users)
+
+        val currUserId = intent.getStringExtra("currUserId")!!
+        searchUserAdapter = SearchUserAdapter(this, users, currUserId)
         usersRv.adapter = searchUserAdapter
 
         searchField = findViewById(R.id.activity_search_search)

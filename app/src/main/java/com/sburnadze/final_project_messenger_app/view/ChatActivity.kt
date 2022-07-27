@@ -3,22 +3,22 @@ package com.sburnadze.final_project_messenger_app.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.os.Message
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sburnadze.final_project_messenger_app.ChatModel
+import com.sburnadze.final_project_messenger_app.IChatMainView
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.adapters.ChatListAdapter
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
+import com.sburnadze.final_project_messenger_app.viewmodel.ChatViewModel
 
-class ChatActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity(), IChatMainView {
     private lateinit var chatViewModel: ChatModel
     private lateinit var editText: EditText
     private lateinit var recyclerView: RecyclerView
@@ -27,10 +27,10 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var currId: String
     private lateinit var secondId: String
     private lateinit var image: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        Log.d("inat", "success")
         init()
     }
 
@@ -40,7 +40,7 @@ class ChatActivity : AppCompatActivity() {
         currId = currUser.toString()
         val secondUser = intent.getSerializableExtra("secondUserId")
         secondId = secondUser.toString()
-        chatViewModel = ChatModel(this)
+        chatViewModel = ChatModel(ChatViewModel(this))
 
         showMessages()
 
@@ -69,5 +69,12 @@ class ChatActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.chat_recycler_view)
         recyclerView.adapter = chatListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+    }
+
+    override fun showFoundMessages(currMessages: List<ChatMessage>?) {
+        if(currMessages != null){
+            chatListAdapter.chat = currMessages as ArrayList<ChatMessage>
+            chatListAdapter.notifyDataSetChanged()
+        }
     }
 }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/drawable/login_field_style.xml" value="0.1575" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/drawable/sent_message.xml" value="0.1" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/drawable/sign_out_style.xml" value="0.1575" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/activity_chat.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/activity_login.xml" value="0.5" />
@@ -13,7 +14,7 @@
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/authorization.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/profile_page.xml" value="0.1" />
         <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/received_message_item.xml" value="0.15260416666666668" />
-        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/sent_message_item.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/Jurxa/AndroidStudioProjects/Final-Project_Messenger-App/app/src/main/res/layout/sent_message_item.xml" value="0.1" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/drawable/bottom_menu_layout.xml" value="0.1945" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/drawable/searchview_background.xml" value="0.1945" />
         <entry key="..\:/saba/VIII semestri/android/projects/MessengerApp/app/src/main/res/layout-v22/activity_main_page.xml" value="0.20416666666666666" />

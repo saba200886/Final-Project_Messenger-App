@@ -2,6 +2,7 @@ package com.sburnadze.final_project_messenger_app.search
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,11 @@ import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.User
 import com.sburnadze.final_project_messenger_app.view.ChatActivity
 
-class SearchUserAdapter (private val context: Context?, var list: ArrayList<User>): RecyclerView.Adapter<UserViewHolder>() {
+class SearchUserAdapter(
+    private val context: Context?,
+    var list: ArrayList<User>,
+    var currUserId: String
+): RecyclerView.Adapter<UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val currView = LayoutInflater.from(parent.context).inflate(R.layout.search_rv_list, parent, false)
         return UserViewHolder(currView)
@@ -22,7 +27,6 @@ class SearchUserAdapter (private val context: Context?, var list: ArrayList<User
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val currItem = list[position]
-
         holder.name.text = currItem.name
         holder.profession.text = currItem.profession
 
@@ -34,8 +38,12 @@ class SearchUserAdapter (private val context: Context?, var list: ArrayList<User
 
 
         //if user is clicked, chat page should open
+        Log.d("before sunrise", currUserId)
         holder.item.setOnClickListener{
-                val startChat = Intent(holder.item.context, ChatActivity::class.java)
+                val startChat = Intent(holder.item.context, ChatActivity::class.java).apply {
+                    putExtra("secondUserId", currItem.id)
+                    putExtra("currUserId", currUserId)
+                }
                 holder.item.context.startActivity(startChat)
         }
     }

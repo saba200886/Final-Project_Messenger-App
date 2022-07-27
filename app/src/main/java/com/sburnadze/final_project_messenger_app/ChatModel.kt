@@ -1,6 +1,7 @@
 package com.sburnadze.final_project_messenger_app
 
 import android.app.Activity
+import android.os.Message
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -8,8 +9,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
+import com.sburnadze.final_project_messenger_app.viewmodel.ChatViewModel
 
-class ChatModel(private val act: Activity) {
+class ChatModel(private val chatViewModel: ChatViewModel) {
     private var firebaseAuth = FirebaseAuth.getInstance()
     private var chats = Firebase.database.getReference("chats")
 
@@ -28,6 +30,7 @@ class ChatModel(private val act: Activity) {
                             chat.add(message)
                         }
                     }
+                    chatViewModel.onMessagesFound(chat)
                 }
 
                 override fun onCancelled(error: DatabaseError) {

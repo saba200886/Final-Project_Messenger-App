@@ -1,6 +1,7 @@
 package com.sburnadze.final_project_messenger_app.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,21 +11,23 @@ import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
 
 class ChatListAdapter(private val context: Context?, var chat : MutableList<ChatMessage>, private val user: String?):
-    RecyclerView.Adapter<ItemViewHolder>() {
+    RecyclerView.Adapter<ReceiverItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReceiverItemViewHolder {
 
         val view = if(viewType == RECEIVED) {
             LayoutInflater.from(parent.context).inflate(R.layout.received_message_item, parent, false)
         } else {
             LayoutInflater.from(parent.context).inflate(R.layout.sent_message_item, parent, false)
         }
-        return ItemViewHolder(view)
+        return ReceiverItemViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: ReceiverItemViewHolder, position: Int) {
         holder.text.text = chat[position].message
         holder.time.text = chat[position].sentTime
+
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -47,9 +50,9 @@ class ChatListAdapter(private val context: Context?, var chat : MutableList<Chat
 
 }
 
-
-class ItemViewHolder(items: View) : RecyclerView.ViewHolder(items) {
-    var text: TextView = items.findViewById(R.id.received_text)
-    var time: TextView = items.findViewById(R.id.received_time)
+class ReceiverItemViewHolder(items: View) : RecyclerView.ViewHolder(items) {
+    var text: TextView = items.findViewById(R.id.chat_message_text)
+    var time: TextView = items.findViewById(R.id.chat_message_time)
 
 }
+

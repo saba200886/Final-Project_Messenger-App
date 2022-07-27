@@ -26,7 +26,9 @@ class AuthorizationModel(private val act: Activity) {
             .addOnCompleteListener(act) { task ->
                 if (task.isSuccessful) {
                     Log.d("Authorizationmessage", "signInWithEmail:success")
-                    act.startActivity(Intent(act, MainPageActivity::class.java))
+                    act.startActivity(Intent(act, MainPageActivity::class.java).apply {
+                        putExtra("currUserId", firebaseAuth.currentUser?.uid)
+                    })
                 } else {
                     Log.w("Authorizationmessage", "signInWithEmail:failure", task.exception)
                     Toast.makeText(act,"Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -48,7 +50,9 @@ class AuthorizationModel(private val act: Activity) {
                         val user = User(name, pass, whatIDo, userId)
                         users.child(userId).setValue(user)
                     }
-                    act.startActivity(Intent(act, MainPageActivity::class.java))
+                    act.startActivity(Intent(act, MainPageActivity::class.java).apply {
+                        putExtra("currUserId", userId)
+                    })
                 } else {
                     Log.w("Authorizationmessage", "signUpWithEmail:failure", it.exception)
                     Toast.makeText(act,"Authentication failed.", Toast.LENGTH_SHORT).show()
