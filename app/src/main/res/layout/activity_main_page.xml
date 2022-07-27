@@ -10,7 +10,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_page_fragmentViewer"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="@dimen/fragment_height"
         android:background="@color/white" />
 
 

@@ -47,4 +47,16 @@
     <dimen name="image_padding">15dp</dimen>
     <dimen name="max_text_width">290dp</dimen>
     <dimen name="search_view_margin_horizontal">40dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="fragment_height">400dp</dimen>
+    <dimen name="image_margin_top">100dp</dimen>
+    <dimen name="what_i_do_margin">15dp</dimen>
+    <dimen name="sign_up_margin">60dp</dimen>
+    <dimen name="profile_image">200dp</dimen>
+    <dimen name="profile_margin">100dp</dimen>
+    <dimen name="username_margin">30dp</dimen>
+    <dimen name="profession_margin">15dp</dimen>
+    <dimen name="app_button_width">130dp</dimen>
+    <dimen name="app_button_height">40dp</dimen>
+    <dimen name="app_button_margin">30dp</dimen>
 </resources>

@@ -9,9 +9,9 @@
 
         <ImageView
             android:id="@+id/profile_image_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="100dp"
+            android:layout_width="@dimen/profile_image"
+            android:layout_height="@dimen/profile_image"
+            android:layout_marginTop="@dimen/profile_margin"
             android:adjustViewBounds="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -21,9 +21,9 @@
 
         <TextView
             android:id="@+id/profile_username_edit_text"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/login_text_field_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/username_margin"
             android:background="@drawable/login_field_style"
             android:singleLine="true"
             android:text="Default nickname"
@@ -35,9 +35,9 @@
 
         <EditText
             android:id="@+id/profile_what_i_do_edit_text"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/login_text_field_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/profession_margin"
             android:background="@drawable/login_field_style"
             android:text="Default Profession"
             android:textAlignment="center"
@@ -47,9 +47,9 @@
 
         <Button
             android:id="@+id/update_button"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="@dimen/login_button_width"
+            android:layout_height="@dimen/login_button_height"
+            android:layout_marginTop="@dimen/sign_up_margin"
             android:backgroundTint="@color/login_button_color"
             android:text="Update"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,9 +59,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_out_button"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="@dimen/app_button_width"
+            android:layout_height="@dimen/app_button_height"
+            android:layout_marginTop="@dimen/app_button_margin"
             android:background="@drawable/sign_out_style"
             android:singleLine="true"
             android:text="SIGN oUT"

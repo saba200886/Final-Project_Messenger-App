@@ -46,7 +46,7 @@
 
                         <LinearLayout
                             android:id="@+id/user_layout"
-                            android:layout_width= "0dp"
+                            android:layout_width= "@dimen/zero"
                             android:layout_weight="1"
                             android:layout_height="@dimen/toolbar_height"
                             android:fitsSystemWindows="true"
@@ -117,12 +117,12 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="UselessParent"
-        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteX="@dimen/side_padding"
         android:layout_marginBottom="@dimen/side_padding">
 
         <EditText
             android:id="@+id/message"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="@dimen/name_size"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
@@ -139,8 +139,8 @@
         </EditText>
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/search_field_vertical_margins"
+            android:layout_height="@dimen/search_field_vertical_margins"
             android:id="@+id/send_button"
             tools:ignore="InvalidId"
             android:background="@drawable/avatar_image_placeholder"

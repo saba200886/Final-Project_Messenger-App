@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/register_image_view"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/login_avatar_size"
+        android:layout_height="@dimen/login_avatar_size"
+        android:layout_marginTop="@dimen/image_margin_top"
         android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,9 +21,9 @@
 
     <EditText
         android:id="@+id/register_username_edit_text"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/search_field_vertical_margins"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_nickname"
@@ -35,9 +35,9 @@
 
     <EditText
         android:id="@+id/register_password_edit_text"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/login_registration_text_bottom_margin"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_password"
@@ -48,9 +48,9 @@
 
     <EditText
         android:id="@+id/register_what_i_do_edit_text"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/what_i_do_margin"
         android:background="@drawable/login_field_style"
         android:hint="@string/enter_what_you_do"
         android:textAlignment="center"
@@ -60,9 +60,9 @@
 
     <Button
         android:id="@+id/sign_up_button"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="@dimen/login_button_width"
+        android:layout_height="@dimen/login_button_height"
+        android:layout_marginTop="@dimen/sign_up_margin"
         android:backgroundTint="@color/login_button_color"
         android:text="SIGN UP"
         app:layout_constraintEnd_toEndOf="parent"
