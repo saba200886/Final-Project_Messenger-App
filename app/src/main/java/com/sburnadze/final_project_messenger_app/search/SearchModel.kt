@@ -19,7 +19,8 @@ class SearchModel(private val searchViewModel: SearchViewModel) {
 
     //this function searches for users by name
     fun searchUserByName(name: String){
-        users.orderByChild("username")
+        Log.d("searchUserbymodel", "success")
+        users.orderByChild("name")
             .equalTo(name)
             .get()
             .addOnSuccessListener { ifSuccessful(it) }
@@ -28,6 +29,8 @@ class SearchModel(private val searchViewModel: SearchViewModel) {
 
 
     private fun ifSuccessful(it: DataSnapshot?) {
+        Log.d("searchUserIf", "success")
+        Log.d("Search Error", "jurxa@gmail.com  finding users")
         val currUsers = mutableListOf<User>()
         it?.children?.forEach{
             val currUser = it.getValue(User::class.java) as User
@@ -41,6 +44,7 @@ class SearchModel(private val searchViewModel: SearchViewModel) {
 
 
     private fun ifFailed(it: Exception) {
+        Log.d("searchUserelse", "success")
         Log.d("Search Error", "Error occurred in finding users", it)
         searchViewModel.onUsersFound(null)
     }

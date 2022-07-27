@@ -24,11 +24,11 @@ class SearchUserAdapter (private val context: Context?, var list: ArrayList<User
         holder.name.text = currItem.name
         holder.profession.text = currItem.profession
 
-        if (context != null) {
+       /* if (context != null) {
             Glide.with(context).load(currItem.avatar).circleCrop().into(holder.image)
         } else {
             holder.image.setImageResource(R.drawable.avatar_image_placeholder)
-        }
+        }*/
 
 
         //if user is clicked, chat page should open
