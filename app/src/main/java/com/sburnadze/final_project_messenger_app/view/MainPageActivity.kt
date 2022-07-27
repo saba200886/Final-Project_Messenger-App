@@ -4,13 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.adapters.ViewPagerAdapter
+import com.sburnadze.final_project_messenger_app.mainPageFragment.MainPageFragment
 import com.sburnadze.final_project_messenger_app.search.SearchActivity
 
 class MainPageActivity : AppCompatActivity() {
@@ -18,6 +17,7 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     lateinit var viewPager: ViewPager2
     private lateinit var floatingButton: FloatingActionButton
+    private lateinit var currUser: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +39,10 @@ class MainPageActivity : AppCompatActivity() {
             })
         }
 
+        val frags = arrayListOf(ProfilePageFragment(currUser), MainPageFragment(currUser))
+
         viewPager = findViewById(R.id.main_page_fragmentViewer)
-        viewPager.adapter = ViewPagerAdapter(this)
+        viewPager.adapter = ViewPagerAdapter(this, frags)
 
 
         Log.d("asdasd", "first")

@@ -1,4 +1,4 @@
-package com.sburnadze.final_project_messenger_app.adapters
+package com.sburnadze.final_project_messenger_app.mainPageFragment
 
 import android.content.Context
 import android.content.Intent
@@ -10,10 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sburnadze.final_project_messenger_app.R
+import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.model.LastMessage
 import com.sburnadze.final_project_messenger_app.view.ChatActivity
 
-class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMessage>): RecyclerView.Adapter<ConversationViewHolder>() {
+class MainPageAdapter(private val context: Context?, var list: ArrayList<ChatMessage>): RecyclerView.Adapter<ConversationViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversationViewHolder {
         val currView = LayoutInflater.from(parent.context).inflate(R.layout.main_page_rv_list, parent, false)
         return ConversationViewHolder(currView)
@@ -23,7 +24,7 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
         val currItem = list[position]
 
-        holder.name.text = currItem.receiver?.name
+        holder.name.text = currItem.receiver
         holder.sentTime.text = currItem.sentTime
         holder.message.text = currItem.message
 

@@ -30,21 +30,20 @@ class SearchUserAdapter(
         holder.name.text = currItem.name
         holder.profession.text = currItem.profession
 
-       /* if (context != null) {
-            Glide.with(context).load(currItem.avatar).circleCrop().into(holder.image)
-        } else {
-            holder.image.setImageResource(R.drawable.avatar_image_placeholder)
-        }*/
+        /* if (context != null) {
+             Glide.with(context).load(currItem.avatar).circleCrop().into(holder.image)
+         } else {
+             holder.image.setImageResource(R.drawable.avatar_image_placeholder)
+         }*/
 
 
         //if user is clicked, chat page should open
-        Log.d("before sunrise", currUserId)
         holder.item.setOnClickListener{
-                val startChat = Intent(holder.item.context, ChatActivity::class.java).apply {
-                    putExtra("secondUserId", currItem.id)
-                    putExtra("currUserId", currUserId)
-                }
-                holder.item.context.startActivity(startChat)
+            val startChat = Intent(holder.item.context, ChatActivity::class.java).apply {
+                putExtra("secondUserId", currItem.id)
+                putExtra("currUserId", currUserId)
+            }
+            holder.item.context.startActivity(startChat)
         }
     }
 

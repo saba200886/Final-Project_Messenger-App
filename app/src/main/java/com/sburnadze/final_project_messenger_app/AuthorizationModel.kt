@@ -38,23 +38,19 @@ class AuthorizationModel(private val act: Activity) {
 
 
     fun registerUser(name: String, pass: String, whatIDo: String){
-        //val user = User(name, pass, whatIDo, image, name)
-        //users.child(name).setValue(user)
         firebaseAuth.createUserWithEmailAndPassword(name, pass)
-            .addOnCompleteListener {
-                if(it.isSuccessful){
-                    Log.d("registerdd", "success")
+            .addOnCompleteListener(act){task ->
+                if(task.isSuccessful){
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
                     if (userId != null) {
-                        val user = User(name, pass, whatIDo, userId)
-                        users.child(userId).setValue(user)
+                        users.child(userId).setValue(User(name, pass, whatIDo, userId))
                     }
                     act.startActivity(Intent(act, MainPageActivity::class.java).apply {
                         putExtra("currUserId", userId)
                     })
                 } else {
-                    Log.w("Authorizationmessage", "signUpWithEmail:failure", it.exception)
+                    Log.w("Authorizationmessage", "signUpWithEmail:failure", task.exception)
                     Toast.makeText(act,"Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
 

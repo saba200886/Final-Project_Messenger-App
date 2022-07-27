@@ -55,4 +55,3 @@ class ReceiverItemViewHolder(items: View) : RecyclerView.ViewHolder(items) {
     var time: TextView = items.findViewById(R.id.chat_message_time)
 
 }
-

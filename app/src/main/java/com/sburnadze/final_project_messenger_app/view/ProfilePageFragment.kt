@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.sburnadze.final_project_messenger_app.R
 
 
-class ProfilePageFragment : Fragment() {
+class ProfilePageFragment(currUser: String) : Fragment() {
 
 
     override fun onCreateView(

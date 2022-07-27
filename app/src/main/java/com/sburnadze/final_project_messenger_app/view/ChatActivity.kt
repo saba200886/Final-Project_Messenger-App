@@ -1,10 +1,12 @@
 package com.sburnadze.final_project_messenger_app.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
@@ -44,8 +46,10 @@ class ChatActivity : AppCompatActivity(), IChatMainView {
 
         showMessages()
 
-        findViewById<AppCompatImageView>(R.id.back_icon).setOnClickListener{
-            startActivity(Intent(this, MainPageActivity::class.java))
+        findViewById<ImageView>(R.id.back_icon).setOnClickListener{
+            startActivity(Intent(this, MainPageActivity::class.java).apply {
+                putExtra("currUserId", currId)
+            })
         }
 
         findViewById<AppCompatImageButton>(R.id.send_button).setOnClickListener{
@@ -71,6 +75,8 @@ class ChatActivity : AppCompatActivity(), IChatMainView {
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun showFoundMessages(currMessages: List<ChatMessage>?) {
         if(currMessages != null){
             chatListAdapter.chat = currMessages as ArrayList<ChatMessage>

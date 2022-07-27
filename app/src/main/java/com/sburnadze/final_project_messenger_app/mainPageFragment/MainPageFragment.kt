@@ -1,22 +1,25 @@
-package com.sburnadze.final_project_messenger_app.view
+package com.sburnadze.final_project_messenger_app.mainPageFragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sburnadze.final_project_messenger_app.R
-import com.sburnadze.final_project_messenger_app.adapters.MainPageAdapter
+import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.model.LastMessage
 import com.sburnadze.final_project_messenger_app.model.User
-import com.sburnadze.final_project_messenger_app.search.SearchUserAdapter
 
-class MainPageFragment : Fragment() {
+class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
 
     lateinit var chatsRv: RecyclerView
-    lateinit var chats: ArrayList<LastMessage>
+    lateinit var chats: ArrayList<ChatMessage>
     private lateinit var mainPageAdapter: MainPageAdapter
+    private lateinit var mainPageViewModel: MainPageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,5 +41,24 @@ class MainPageFragment : Fragment() {
 
         mainPageAdapter = MainPageAdapter(this.context, chats)
         chatsRv.adapter = mainPageAdapter
+
+
+        mainPageViewModel = MainPageViewModel(this, currUser)
+
+        mainPageViewModel.searchLastChats()
+    }
+
+
+
+    //show all last messages
+    @SuppressLint("NotifyDataSetChanged")
+    override fun showFoundLastChats(currChats: List<ChatMessage>?) {
+        if(currChats != null){
+            mainPageAdapter.list = currChats as ArrayList<ChatMessage>
+            mainPageAdapter.notifyDataSetChanged()
+        }else {
+            Toast.makeText(this.context, "Could not find last messages", Toast.LENGTH_SHORT).show()
+            Log.d("Error Message", "Could not find last messages")
+        }
     }
 }
