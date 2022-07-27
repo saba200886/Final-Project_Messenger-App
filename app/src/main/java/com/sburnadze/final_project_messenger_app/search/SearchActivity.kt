@@ -82,6 +82,8 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
     @SuppressLint("NotifyDataSetChanged")
     override fun showFoundUsers(currUsers: List<User>?) {
         if(currUsers != null){
+            users = currUsers as ArrayList<User>
+            Log.d("searchasdasd", users.size.toString())
             searchUserAdapter.list = users
             searchUserAdapter.notifyDataSetChanged()
         } else {

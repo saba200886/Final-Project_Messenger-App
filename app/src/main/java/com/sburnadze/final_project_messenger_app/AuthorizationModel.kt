@@ -35,7 +35,7 @@ class AuthorizationModel(private val act: Activity) {
     }
 
 
-    fun registerUser(name: String, pass: String, whatIDo: String, image: ImageView){
+    fun registerUser(name: String, pass: String, whatIDo: String){
         //val user = User(name, pass, whatIDo, image, name)
         //users.child(name).setValue(user)
         firebaseAuth.createUserWithEmailAndPassword(name, pass)
@@ -45,7 +45,7 @@ class AuthorizationModel(private val act: Activity) {
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
                     if (userId != null) {
-                        val user = User(name, pass, "", userId)
+                        val user = User(name, pass, whatIDo, userId)
                         users.child(userId).setValue(user)
                     }
                     act.startActivity(Intent(act, MainPageActivity::class.java))

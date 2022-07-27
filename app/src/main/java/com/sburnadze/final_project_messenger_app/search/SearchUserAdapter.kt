@@ -1,6 +1,7 @@
 package com.sburnadze.final_project_messenger_app.search
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.User
+import com.sburnadze.final_project_messenger_app.view.ChatActivity
 
 class SearchUserAdapter (private val context: Context?, var list: ArrayList<User>): RecyclerView.Adapter<UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -33,8 +35,8 @@ class SearchUserAdapter (private val context: Context?, var list: ArrayList<User
 
         //if user is clicked, chat page should open
         holder.item.setOnClickListener{
-            //    val startChat = Intent(holder.item.context, ChatActivity::class.java)
-            //    holder.item.context.startActivity(startChat)
+                val startChat = Intent(holder.item.context, ChatActivity::class.java)
+                holder.item.context.startActivity(startChat)
         }
     }
 

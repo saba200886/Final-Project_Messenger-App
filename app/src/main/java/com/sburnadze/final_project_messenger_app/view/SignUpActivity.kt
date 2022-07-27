@@ -43,7 +43,7 @@ class SignUpActivity: AppCompatActivity() {
         val whatIDo = whatIDo.text.toString()
         val image = image
         if(check(name, password, whatIDo)) {
-            authorizationViewModel.registerUser(name, password, whatIDo, image)
+            authorizationViewModel.registerUser(name, password, whatIDo)
         }
 
     }

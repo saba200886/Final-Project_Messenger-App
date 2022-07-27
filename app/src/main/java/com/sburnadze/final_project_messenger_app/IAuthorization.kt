@@ -6,5 +6,5 @@ interface IAuthorization {
 
     fun login(user: String, pass: String)
 
-    fun register(user: String, pass: String, whatIDo: String, image: ImageView)
+    fun register(user: String, pass: String, whatIDo: String)
 }
