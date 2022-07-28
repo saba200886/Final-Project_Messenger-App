@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ProfilePageFragment">
+
+
+        <ImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="@dimen/profile_image"
+            android:layout_height="@dimen/profile_image"
+            android:layout_marginTop="@dimen/profile_margin"
+            android:adjustViewBounds="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/avatar_image_placeholder"
+            android:contentDescription="login_image_view" />
+
+        <EditText
+            android:id="@+id/profile_username_edit_text"
+            android:layout_width="@dimen/login_text_field_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/username_margin"
+            android:background="@drawable/login_field_style"
+            android:singleLine="true"
+            android:text="Default nickname"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
+
+
+        <EditText
+            android:id="@+id/profile_what_i_do_edit_text"
+            android:layout_width="@dimen/login_text_field_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/profession_margin"
+            android:background="@drawable/login_field_style"
+            android:text="Default Profession"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_username_edit_text" />
+
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="@dimen/login_button_width"
+            android:layout_height="@dimen/login_button_height"
+            android:layout_marginTop="@dimen/sign_up_margin"
+            android:backgroundTint="@color/login_button_color"
+            android:text="Update"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_what_i_do_edit_text" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_out_button"
+            android:layout_width="@dimen/app_button_width"
+            android:layout_height="@dimen/app_button_height"
+            android:layout_marginTop="@dimen/app_button_margin"
+            android:background="@drawable/sign_out_style"
+            android:singleLine="true"
+            android:text="SIGN oUT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

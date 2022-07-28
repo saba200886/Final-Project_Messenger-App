@@ -4,78 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LoginActivity">
+    tools:context=".view.SignUpActivity">
+
 
     <ImageView
-        android:id="@+id/login_image_view"
+        android:id="@+id/register_image_view"
         android:layout_width="@dimen/login_avatar_size"
         android:layout_height="@dimen/login_avatar_size"
-        android:layout_marginTop="@dimen/login_avatar_top_margin"
+        android:layout_marginTop="@dimen/image_margin_top"
         android:adjustViewBounds="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/avatar_image_placeholder"
-        android:contentDescription="@string/login_image_view" />
+        android:contentDescription="login_image_view" />
 
     <EditText
-        android:id="@+id/login_username_edit_text"
+        android:id="@+id/register_username_edit_text"
         android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_text_field_margin_top"
+        android:layout_marginTop="@dimen/search_field_vertical_margins"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_nickname"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_image_view" />
+        app:layout_constraintTop_toBottomOf="@+id/register_image_view" />
 
 
     <EditText
-        android:id="@+id/login_password_edit_text"
+        android:id="@+id/register_password_edit_text"
         android:layout_width="@dimen/login_text_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_password_margin_top"
+        android:layout_marginTop="@dimen/login_registration_text_bottom_margin"
         android:background="@drawable/login_field_style"
         android:singleLine="true"
         android:hint="@string/enter_your_password"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_username_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/register_username_edit_text" />
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="@dimen/login_button_width"
-        android:layout_height="@dimen/login_button_height"
-        android:layout_marginTop="@dimen/login_button_margin_top"
-        android:backgroundTint="@color/login_button_color"
-        android:text="@string/sign_in"
+    <EditText
+        android:id="@+id/register_what_i_do_edit_text"
+        android:layout_width="@dimen/login_text_field_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/what_i_do_margin"
+        android:background="@drawable/login_field_style"
+        android:hint="@string/enter_what_you_do"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/register_password_edit_text" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_registered"
-        android:layout_marginBottom="@dimen/login_registration_text_bottom_margin"
-        app:layout_constraintBottom_toTopOf="@+id/login_page_signup_button"
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="@dimen/login_button_width"
+        android:layout_height="@dimen/login_button_height"
+        android:layout_marginTop="@dimen/sign_up_margin"
+        android:backgroundTint="@color/login_button_color"
+        android:text="SIGN UP"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_what_i_do_edit_text" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_page_signup_button"
-        android:layout_width="@dimen/login_signUp_button_width"
-        android:layout_height="@dimen/login_signUp_button_height"
-        android:layout_marginBottom="@dimen/login_signUp_button_bottom_margin"
-        android:text="@string/sign_up"
-        android:background="@color/login_second_button_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

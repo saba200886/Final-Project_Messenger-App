@@ -12,4 +12,8 @@
     <color name="login_button_color">#2961C1</color>
     <color name="login_second_button_color">#FFFFFFFF</color>
     <color name="login_second_button_frame_color">#636161</color>
+    <color name="add_button_color">#4035F6</color>
+    <color name="bottom_menu_border_color">#636161</color>
+    <color name="message_bar_color">#E4DFDF</color>
+    <color name="received_message">#BBC0E3</color>
 </resources>

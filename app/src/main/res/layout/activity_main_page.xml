@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainPageActivity">
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_page_fragmentViewer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/main_page_bottomAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_menu_layout"
+        app:fabCradleMargin="@dimen/main_page_fab_margin"
+        app:fabCradleRoundedCornerRadius="@dimen/main_page_fab_radius"
+        app:hideOnScroll="true">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_page_bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/main_page_bottom_navigation_margin_top"
+            android:layout_marginEnd="@dimen/main_page_bottom_navigation_margin_right"
+            android:background="@android:color/transparent"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/add_button_color"
+        android:contentDescription="@string/floating_add_button"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_anchor="@id/main_page_bottomAppBarLayout"
+        app:maxImageSize="@dimen/main_page_floating_button_maxSize" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
