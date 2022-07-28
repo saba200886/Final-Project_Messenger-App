@@ -6,7 +6,8 @@ import com.sburnadze.final_project_messenger_app.model.User
 
 interface IMainPage {
 
-    fun searchLastChats()
+    fun searchLastChats(name: String)
 
     fun onLastChatsFound(currLastChats: List<LastMessage>?)
+
 }
