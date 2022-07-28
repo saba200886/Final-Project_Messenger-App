@@ -2,6 +2,8 @@ package com.sburnadze.final_project_messenger_app.mainPageFragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +11,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
+import com.jakewharton.rxbinding.widget.RxTextView
 import com.sburnadze.final_project_messenger_app.R
-import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.model.LastMessage
-import com.sburnadze.final_project_messenger_app.model.User
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
 
@@ -20,6 +24,7 @@ class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
     lateinit var chats: ArrayList<LastMessage>
     private lateinit var mainPageAdapter: MainPageAdapter
     private lateinit var mainPageViewModel: MainPageViewModel
+    lateinit var searchView: TextInputEditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,23 +47,40 @@ class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
         mainPageAdapter = MainPageAdapter(this.context, chats)
         chatsRv.adapter = mainPageAdapter
 
-
         mainPageViewModel = MainPageViewModel(this, currUser)
 
-        mainPageViewModel.searchLastChats()
+        mainPageViewModel.searchLastChats("")
+
+        searchView = view.findViewById(R.id.fragment_main_page_search)
+        searchUser()
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun searchUser() {
+        val executor = Executors.newSingleThreadExecutor()
+        val handler = Handler(Looper.getMainLooper())
+
+        RxTextView.textChangeEvents(searchView).debounce(1000, TimeUnit.MILLISECONDS)
+            .subscribe {
+                executor.execute {
+                    val currText = searchView.text.toString()
+
+                    handler.post{
+                        mainPageViewModel.searchLastChats(currText)
+                    }
+                }
+            }
+    }
 
 
     //show all last messages
     @SuppressLint("NotifyDataSetChanged")
     override fun showFoundLastChats(currChats: List<LastMessage>?) {
-        if(currChats != null){
-            mainPageAdapter.list = currChats as ArrayList<LastMessage>
-            mainPageAdapter.notifyDataSetChanged()
-        }else {
-            Toast.makeText(this.context, "Could not find last messages", Toast.LENGTH_SHORT).show()
-            Log.d("Error Message", "Could not find last messages")
-        }
+        chats = currChats as ArrayList<LastMessage>
+
+        mainPageAdapter.list = chats
+        mainPageAdapter.notifyDataSetChanged()
     }
+
 }

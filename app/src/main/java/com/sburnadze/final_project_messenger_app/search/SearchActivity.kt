@@ -55,7 +55,6 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun searchUser() {
-        Log.d("searchUserActivity", "success")
         RxTextView.textChangeEvents(searchField).debounce(1000, TimeUnit.MILLISECONDS)
             .subscribe {
                 runOnUiThread {
@@ -72,7 +71,6 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
 
 
     private fun findSearchedUser(currText: String) {
-        Log.d("findsearchUserActivity", "success")
         searchViewModel.searchUserByName(currText)
 
     }
