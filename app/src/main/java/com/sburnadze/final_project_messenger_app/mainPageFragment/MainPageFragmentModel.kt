@@ -1,5 +1,6 @@
 package com.sburnadze.final_project_messenger_app.mainPageFragment
 
+import android.os.Build
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -18,6 +19,7 @@ class MainPageFragmentModel(private val mainPageViewModel: MainPageViewModel)  {
     private val users = Firebase.database.getReference("users")
 
     fun searchLastChats(currUser: String) {
+        val chatsMap = mutableMapOf<String, ChatMessage>()
         val currLastChats = mutableListOf<LastMessage>()
 
         var lastMessage: ChatMessage? = null
@@ -30,6 +32,39 @@ class MainPageFragmentModel(private val mainPageViewModel: MainPageViewModel)  {
                     if (curChat.sender == currUser || curChat.receiver == currUser){
                         lastMessage = curChat
                     }
+
+                    users.addValueEventListener(object: ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            snapshot.children.forEach{
+                                var userStr = lastMessage?.sender
+                                if(lastMessage?.receiver != currUser)
+                                    userStr = lastMessage?.receiver
+
+                                if (it.key == userStr){
+                                    username = (it.getValue(User::class.java) as User).name.toString()
+                                }
+                            }
+
+                            if(chatsMap.containsKey(username)){
+                                chatsMap[username] = lastMessage!!
+                            } else {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                    chatsMap.replace(username, lastMessage!!)
+                                }
+                            }
+
+                            //val res = LastMessage(username, lastMessage)
+                            //currLastChats.add(res)
+
+                            //mainPageViewModel.onLastChatsFound(currLastChats)
+
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
                 }
             }
 
@@ -40,29 +75,11 @@ class MainPageFragmentModel(private val mainPageViewModel: MainPageViewModel)  {
         })
 
 
-        users.addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach{
-                    var userStr = lastMessage?.sender
-                    if(lastMessage?.receiver != currUser)
-                        userStr = lastMessage?.receiver
-
-                    if (it.key == userStr){
-                        username = (it.getValue(User::class.java) as User).name.toString()
-                    }
-                }
-
-                val res = LastMessage(username, lastMessage)
-                currLastChats.add(res)
-
-                mainPageViewModel.onLastChatsFound(currLastChats)
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        Log.d("asdasdasdChatMap", chatsMap.size.toString())
+        for ((key, value) in chatsMap){
+            val res = LastMessage(key, value)
+            currLastChats.add(res)
+        }
+        mainPageViewModel.onLastChatsFound(currLastChats)
     }
 }

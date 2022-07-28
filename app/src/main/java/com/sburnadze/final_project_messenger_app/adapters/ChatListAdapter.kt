@@ -31,9 +31,9 @@ class ChatListAdapter(private val context: Context?, var chat : MutableList<Chat
     override fun onBindViewHolder(holder: ReceiverItemViewHolder, position: Int) {
         holder.text.text = chat[position].message
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         val sentDate = sdf.parse(chat[position].sentTime.toString())
-        val sdf2 = SimpleDateFormat("hh:mm")
+        val sdf2 = SimpleDateFormat("HH:mm")
         val date = sdf2.format(sentDate as Date).toString()
         holder.time.text = date
 

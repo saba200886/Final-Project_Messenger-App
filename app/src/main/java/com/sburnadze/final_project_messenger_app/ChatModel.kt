@@ -3,6 +3,7 @@ package com.sburnadze.final_project_messenger_app
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Message
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,8 +24,9 @@ class ChatModel(private val chatViewModel: ChatViewModel) {
 
     @SuppressLint("SimpleDateFormat")
     fun sendMessage(text: String, currUser: String, secondUser: String){
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
-        val currTime = sdf.format(Date()).toString()
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+        val currTime =  sdf.format(Date()).toString()
+        Log.d("asdasdasdTTT", currTime)
 
         chats.push().setValue(ChatMessage(currUser, secondUser, text, currTime))
     }

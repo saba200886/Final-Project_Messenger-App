@@ -82,26 +82,19 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
         var result = ""
 
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
         val sentDate = sdf.parse(sentTime.toString())
-
-
 
         val minutes = (Calendar.getInstance().time.time - sentDate!!.time)/(60*1000L)
         val hours = minutes/60
         val days = hours/24
-
-
-        Log.d("asdasdasdMin", minutes.toString())
-        Log.d("asdasdasdHour", hours.toString())
-        Log.d("asdasdasdDays", days.toString())
 
         result = when {
             hours < 1 -> {
                 "$minutes min"
             }
             days < 1 -> {
-                "$hours min"
+                "$hours hour"
             }
             else -> {
                 val sdf2 = SimpleDateFormat("D MMM")
