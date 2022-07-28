@@ -59,4 +59,5 @@ class ChatModel(private val chatViewModel: ChatViewModel) {
         }
         return false
     }
+
 }

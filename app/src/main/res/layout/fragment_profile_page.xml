@@ -19,7 +19,7 @@
             android:src="@drawable/avatar_image_placeholder"
             android:contentDescription="login_image_view" />
 
-        <TextView
+        <EditText
             android:id="@+id/profile_username_edit_text"
             android:layout_width="@dimen/login_text_field_width"
             android:layout_height="wrap_content"

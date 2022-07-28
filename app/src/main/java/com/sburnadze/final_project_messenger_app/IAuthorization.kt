@@ -7,4 +7,8 @@ interface IAuthorization {
     fun login(user: String, pass: String)
 
     fun register(user: String, pass: String, whatIDo: String)
+
+    fun signOut()
+
+    fun update(name: String, whatIDo: String)
 }

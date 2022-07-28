@@ -4,16 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.util.Log
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.User
-import com.sburnadze.final_project_messenger_app.view.LoginActivity
 import com.sburnadze.final_project_messenger_app.view.MainPageActivity
-import com.sburnadze.final_project_messenger_app.view.ProfilePageFragment
 
 class AuthorizationModel(private val act: Activity) {
     private var firebaseAuth = FirebaseAuth.getInstance()
@@ -44,7 +41,7 @@ class AuthorizationModel(private val act: Activity) {
                     val user = firebaseAuth.currentUser
                     val userId = user?.uid
                     if (userId != null) {
-                        users.child(userId).setValue(User(name, pass, whatIDo, userId))
+                        users.child(userId).setValue(User(name, whatIDo, userId))
                     }
                     act.startActivity(Intent(act, MainPageActivity::class.java).apply {
                         putExtra("currUserId", userId)
@@ -57,5 +54,13 @@ class AuthorizationModel(private val act: Activity) {
             }
     }
 
+    fun signOut(){
+        firebaseAuth.signOut()
+    }
+
+    fun update(name: String, whatIDo: String){
+        val userId = firebaseAuth.currentUser!!.uid
+        users.child(userId).setValue(User(name, whatIDo, userId))
+    }
 
 }

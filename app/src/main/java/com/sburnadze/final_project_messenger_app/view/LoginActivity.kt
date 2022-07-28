@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var password: EditText
     private lateinit var loginBut: Button
     private lateinit var signUpBut: AppCompatButton
+
     private lateinit var authorizationViewModel: AuthorizationModel
 
 

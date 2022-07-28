@@ -19,5 +19,12 @@ class AutorizationViewModel(act: Activity): ViewModel(), IAuthorization {
         autorizationModel.registerUser(user, pass, whatIDo)
     }
 
+    override fun signOut() {
+        autorizationModel.signOut()
+    }
+
+    override fun update(name: String, whatIDo: String) {
+        autorizationModel.update(name, whatIDo)
+    }
 
 }
