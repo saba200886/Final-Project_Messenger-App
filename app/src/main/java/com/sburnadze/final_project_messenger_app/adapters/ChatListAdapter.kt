@@ -1,5 +1,6 @@
 package com.sburnadze.final_project_messenger_app.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ChatListAdapter(private val context: Context?, var chat : MutableList<ChatMessage>, private val user: String?):
     RecyclerView.Adapter<ReceiverItemViewHolder>() {
@@ -24,9 +27,15 @@ class ChatListAdapter(private val context: Context?, var chat : MutableList<Chat
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: ReceiverItemViewHolder, position: Int) {
         holder.text.text = chat[position].message
-        holder.time.text = chat[position].sentTime
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sentDate = sdf.parse(chat[position].sentTime.toString())
+        val sdf2 = SimpleDateFormat("hh:mm")
+        val date = sdf2.format(sentDate as Date).toString()
+        holder.time.text = date
 
     }
 

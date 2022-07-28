@@ -1,6 +1,7 @@
 package com.sburnadze.final_project_messenger_app.mainPageFragment
 
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -42,12 +43,16 @@ class MainPageFragmentModel(private val mainPageViewModel: MainPageViewModel)  {
         users.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach{
-                    if (it.key == lastMessage?.receiver){
+                    var userStr = lastMessage?.sender
+                    if(lastMessage?.receiver != currUser)
+                        userStr = lastMessage?.receiver
+
+                    if (it.key == userStr){
                         username = (it.getValue(User::class.java) as User).name.toString()
                     }
                 }
 
-                val res = LastMessage(username, lastMessage!!)
+                val res = LastMessage(username, lastMessage)
                 currLastChats.add(res)
 
                 mainPageViewModel.onLastChatsFound(currLastChats)

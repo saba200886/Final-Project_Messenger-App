@@ -1,7 +1,11 @@
 package com.sburnadze.final_project_messenger_app.mainPageFragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.util.Log
+import android.util.TimeUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +19,12 @@ import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.model.LastMessage
 import com.sburnadze.final_project_messenger_app.view.ChatActivity
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMessage>): RecyclerView.Adapter<ConversationViewHolder>() {
@@ -27,19 +36,21 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
 
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
         val currItem = list[position].message
+        if(currItem?.sender == null)
+            return
 
 
         holder.name.text = list[position].name
-        holder.message.text = currItem.message
+        holder.message.text = currItem?.message
 
 
-      //  val time = getTime(currItem.sentTime)
-      //  holder.sentTime.text = time
-        holder.sentTime.text = currItem.sentTime
+        val time = getTime(currItem?.sentTime)
+        holder.sentTime.text = time
+        //holder.sentTime.text = currItem.sentTime
 
 
         if (context != null) {
-            Glide.with(context).load(currItem.avatar).circleCrop().into(holder.image)
+            Glide.with(context).load(currItem?.avatar).circleCrop().into(holder.image)
         } else {
             holder.image.setImageResource(R.drawable.avatar_image_placeholder)
         }
@@ -53,23 +64,36 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
     }
 
     //this function finds time to be written on last message
+    @SuppressLint("SimpleDateFormat")
     private fun getTime(sentTime: String?): String {
         var result = ""
 
-        val currDate = Calendar.getInstance().time
-        val sentDate = SimpleDateFormat("dd-MM-yyyy").parse(sentTime)
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sentDate = sdf.parse(sentTime.toString())
 
 
-        val minutes = (currDate.time - sentDate.time)/60000
+
+        val minutes = (Calendar.getInstance().time.time - sentDate!!.time)/(60*1000L)
         val hours = minutes/60
         val days = hours/24
 
-        if(hours < 1){
-            result = SimpleDateFormat("mm").parse(minutes.toString()).toString()
-        } else if (days < 1){
-            result = SimpleDateFormat("hh").parse(hours.toString()).toString()
-        } else {
-            result = SimpleDateFormat("DD:MM").parse(hours.toString()).toString()
+
+        Log.d("asdasdasdMin", minutes.toString())
+        Log.d("asdasdasdHour", hours.toString())
+        Log.d("asdasdasdDays", days.toString())
+
+        result = when {
+            hours < 1 -> {
+                "$minutes min"
+            }
+            days < 1 -> {
+                "$hours min"
+            }
+            else -> {
+                val sdf2 = SimpleDateFormat("D MMM")
+                sdf2.format(sentDate).toString()
+            }
         }
 
 

@@ -1,5 +1,6 @@
 package com.sburnadze.final_project_messenger_app
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Message
 import com.google.firebase.auth.FirebaseAuth
@@ -10,14 +11,21 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.viewmodel.ChatViewModel
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 
 class ChatModel(private val chatViewModel: ChatViewModel) {
-    private var firebaseAuth = FirebaseAuth.getInstance()
+
     private var chats = Firebase.database.getReference("chats")
 
+
+    @SuppressLint("SimpleDateFormat")
     fun sendMessage(text: String, currUser: String, secondUser: String){
-        val currTime = Calendar.getInstance().time.toString()
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val currTime = sdf.format(Date()).toString()
+
         chats.push().setValue(ChatMessage(currUser, secondUser, text, currTime))
     }
 
