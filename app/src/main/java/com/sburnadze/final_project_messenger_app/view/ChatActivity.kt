@@ -46,7 +46,7 @@ class ChatActivity : AppCompatActivity(), IChatMainView {
         chatViewModel = ChatModel(ChatViewModel(this))
 
         showMessages()
-
+        findViewById<ImageView>(R.id.back_icon).bringToFront()
         findViewById<ImageView>(R.id.back_icon).setOnClickListener{
             startActivity(Intent(this, MainPageActivity::class.java).apply {
                 putExtra("currUserId", currId)

@@ -1,15 +1,19 @@
 package com.sburnadze.final_project_messenger_app.search
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding.widget.RxTextView
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.User
+import com.sburnadze.final_project_messenger_app.view.MainPageActivity
 import java.util.concurrent.TimeUnit
 
 class SearchActivity : AppCompatActivity(), ISearchMainView {
@@ -19,6 +23,7 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var searchUserAdapter: SearchUserAdapter
     private lateinit var searchField: TextInputEditText
+    private lateinit var backButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +52,14 @@ class SearchActivity : AppCompatActivity(), ISearchMainView {
         val currUserId = intent.getStringExtra("currUserId")!!
         searchUserAdapter = SearchUserAdapter(this, users, currUserId)
         usersRv.adapter = searchUserAdapter
+
+
+        backButton = findViewById(R.id.search_back_icon)
+        backButton.setOnClickListener{
+            startActivity(Intent(this, MainPageActivity::class.java).apply {
+                putExtra("currUserId", currUserId)
+            })
+        }
 
         searchField = findViewById(R.id.activity_search_search)
         searchUser()

@@ -1,6 +1,7 @@
 package com.sburnadze.final_project_messenger_app
 
 import android.widget.ImageView
+import com.sburnadze.final_project_messenger_app.model.User
 
 interface IAuthorization {
 
@@ -11,4 +12,5 @@ interface IAuthorization {
     fun signOut()
 
     fun update(name: String, whatIDo: String)
+
 }

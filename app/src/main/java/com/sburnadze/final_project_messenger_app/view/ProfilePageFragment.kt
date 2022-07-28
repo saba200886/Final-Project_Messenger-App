@@ -12,11 +12,18 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.AuthorizationModel
 import com.sburnadze.final_project_messenger_app.R
+import com.sburnadze.final_project_messenger_app.model.User
 
 
-class ProfilePageFragment(currUser: String): Fragment() {
+class ProfilePageFragment(var currUser: String): Fragment() {
 
     private lateinit var nameText: EditText
     private lateinit var whatIDoText: EditText
@@ -34,7 +41,6 @@ class ProfilePageFragment(currUser: String): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("sabaa", "burnaaaaaa")
         init(view)
     }
 
@@ -46,15 +52,40 @@ class ProfilePageFragment(currUser: String): Fragment() {
         view.findViewById<AppCompatButton>(R.id.sign_out_button)
             .setOnClickListener{
                 authorizationViewModel.signOut()
-                startActivity(Intent(MainPageActivity(), LoginActivity::class.java))
+                startActivity(Intent(this.activity, LoginActivity::class.java))
                 activity?.finish()
             }
         view.findViewById<Button>(R.id.update_button).setOnClickListener{
             authorizationViewModel.update(nameText.text.toString(), whatIDoText.text.toString())
         }
+
+        showCurrUser()
     }
 
 
+    private fun showCurrUser(){
+        val users = Firebase.database.getReference("users")
 
+        users.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    val currentUser = it.getValue(User::class.java) as User
+                    if(currentUser.id == currUser){
+                        nameText.setText(currentUser.name.toString())
+                        whatIDoText.setText(currentUser.profession.toString())
+
+                        return
+                    }
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Search Error", "Error occurred in finding user", error.toException())
+            }
+
+        })
+    }
 
 }

@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.lifecycle.ViewModel
 import com.sburnadze.final_project_messenger_app.AuthorizationModel
 import com.sburnadze.final_project_messenger_app.IAuthorization
+import com.sburnadze.final_project_messenger_app.model.User
 
 class AutorizationViewModel(act: Activity): ViewModel(), IAuthorization {
     private val autorizationModel = AuthorizationModel(act)
@@ -26,5 +27,6 @@ class AutorizationViewModel(act: Activity): ViewModel(), IAuthorization {
     override fun update(name: String, whatIDo: String) {
         autorizationModel.update(name, whatIDo)
     }
+
 
 }
