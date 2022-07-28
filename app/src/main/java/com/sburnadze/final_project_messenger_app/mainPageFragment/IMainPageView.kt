@@ -6,5 +6,5 @@ import com.sburnadze.final_project_messenger_app.model.User
 
 interface IMainPageView {
 
-    fun showFoundLastChats(currChats: List<ChatMessage>?)
+    fun showFoundLastChats(currChats: List<LastMessage>?)
 }

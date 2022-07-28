@@ -14,7 +14,7 @@ class MainPageViewModel(private val view: IMainPageView, var currUser: String) :
     }
 
 
-    override fun onLastChatsFound(currLastChats: List<ChatMessage>?) {
+    override fun onLastChatsFound(currLastChats: List<LastMessage>?) {
         view.showFoundLastChats(currLastChats)
     }
 

@@ -17,7 +17,7 @@ import com.sburnadze.final_project_messenger_app.model.User
 class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
 
     lateinit var chatsRv: RecyclerView
-    lateinit var chats: ArrayList<ChatMessage>
+    lateinit var chats: ArrayList<LastMessage>
     private lateinit var mainPageAdapter: MainPageAdapter
     private lateinit var mainPageViewModel: MainPageViewModel
 
@@ -52,9 +52,9 @@ class MainPageFragment(var currUser: String) : Fragment(), IMainPageView {
 
     //show all last messages
     @SuppressLint("NotifyDataSetChanged")
-    override fun showFoundLastChats(currChats: List<ChatMessage>?) {
+    override fun showFoundLastChats(currChats: List<LastMessage>?) {
         if(currChats != null){
-            mainPageAdapter.list = currChats as ArrayList<ChatMessage>
+            mainPageAdapter.list = currChats as ArrayList<LastMessage>
             mainPageAdapter.notifyDataSetChanged()
         }else {
             Toast.makeText(this.context, "Could not find last messages", Toast.LENGTH_SHORT).show()

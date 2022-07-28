@@ -10,13 +10,15 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.viewmodel.ChatViewModel
+import java.util.*
 
 class ChatModel(private val chatViewModel: ChatViewModel) {
     private var firebaseAuth = FirebaseAuth.getInstance()
     private var chats = Firebase.database.getReference("chats")
 
     fun sendMessage(text: String, currUser: String, secondUser: String){
-        chats.push().setValue(ChatMessage(currUser, secondUser, text))
+        val currTime = Calendar.getInstance().time.toString()
+        chats.push().setValue(ChatMessage(currUser, secondUser, text, currTime))
     }
 
     fun loadMessages(chat: MutableList<ChatMessage>, currUser: String, secondUser: String){

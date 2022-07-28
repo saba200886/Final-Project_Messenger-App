@@ -8,5 +8,5 @@ interface IMainPage {
 
     fun searchLastChats()
 
-    fun onLastChatsFound(currLastChats: List<ChatMessage>?)
+    fun onLastChatsFound(currLastChats: List<LastMessage>?)
 }
