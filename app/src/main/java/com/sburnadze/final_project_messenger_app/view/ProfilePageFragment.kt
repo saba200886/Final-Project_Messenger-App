@@ -1,6 +1,8 @@
 package com.sburnadze.final_project_messenger_app.view
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.AuthorizationModel
+import com.sburnadze.final_project_messenger_app.ProfileViewModel
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.User
 
@@ -29,6 +32,8 @@ class ProfilePageFragment(var currUser: String): Fragment() {
     private lateinit var whatIDoText: EditText
     lateinit var profilePicture: ImageView
     private lateinit var authorizationViewModel: AuthorizationModel
+    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var thisUser: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +50,8 @@ class ProfilePageFragment(var currUser: String): Fragment() {
     }
 
     private fun init(view: View) {
+        profileViewModel = ProfileViewModel()
+
         nameText = view.findViewById(R.id.profile_username_edit_text)
         whatIDoText = view.findViewById(R.id.profile_what_i_do_edit_text)
         profilePicture = view.findViewById(R.id.profile_image_view)
@@ -59,7 +66,28 @@ class ProfilePageFragment(var currUser: String): Fragment() {
             authorizationViewModel.update(nameText.text.toString(), whatIDoText.text.toString())
         }
 
+        profilePicture.setOnClickListener{
+            selectPicture()
+        }
+
         showCurrUser()
+    }
+
+
+    private fun selectPicture() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, IMAGE_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == IMAGE_CODE && resultCode == Activity.RESULT_OK && data != null){
+            val uri: Uri = data.data as Uri
+            profilePicture.setImageURI(uri)
+            profileViewModel.uploadImage(thisUser.id.toString(), uri)
+        }
     }
 
 
@@ -73,6 +101,7 @@ class ProfilePageFragment(var currUser: String): Fragment() {
                     if(currentUser.id == currUser){
                         nameText.setText(currentUser.name.toString())
                         whatIDoText.setText(currentUser.profession.toString())
+                        thisUser = currentUser
 
                         return
                     }
@@ -88,4 +117,7 @@ class ProfilePageFragment(var currUser: String): Fragment() {
         })
     }
 
+    companion object {
+        const val IMAGE_CODE = 1
+    }
 }
