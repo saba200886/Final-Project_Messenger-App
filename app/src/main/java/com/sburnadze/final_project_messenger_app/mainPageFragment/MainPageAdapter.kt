@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
 import com.sburnadze.final_project_messenger_app.model.LastMessage
@@ -41,24 +42,36 @@ class MainPageAdapter(private val context: Context?, var list: ArrayList<LastMes
 
 
         holder.name.text = list[position].name
-        holder.message.text = currItem?.message
+        holder.message.text = currItem.message
 
 
-        val time = getTime(currItem?.sentTime)
+        val time = getTime(currItem.sentTime)
         holder.sentTime.text = time
         //holder.sentTime.text = currItem.sentTime
 
 
         if (context != null) {
-            Glide.with(context).load(currItem?.avatar).circleCrop().into(holder.image)
+            Glide.with(context).load(currItem.avatar).circleCrop().into(holder.image)
         } else {
             holder.image.setImageResource(R.drawable.avatar_image_placeholder)
         }
 
 
+        //to find current user is sender or receiver
+        val fireBaseUser = FirebaseAuth.getInstance().currentUser
+        var currUserId = currItem.receiver.toString()
+        var secondUserId = currItem.sender.toString()
+        if(fireBaseUser?.uid == currItem.sender){
+            currUserId = currItem.sender.toString()
+            secondUserId = currItem.receiver.toString()
+        }
+
         //if message item is clicked, chat page should open
         holder.item.setOnClickListener{
-            val startChat = Intent(holder.item.context, ChatActivity::class.java)
+            val startChat = Intent(holder.item.context, ChatActivity::class.java).apply {
+                putExtra("secondUserId", secondUserId)
+                putExtra("currUserId", currUserId)
+            }
             holder.item.context.startActivity(startChat)
         }
     }
