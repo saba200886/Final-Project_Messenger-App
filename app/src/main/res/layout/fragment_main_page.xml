@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
+                app:layout_collapseMode="pin"
                 android:layout_marginVertical="@dimen/search_field_vertical_margins">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -45,7 +46,7 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/fragment_main_page_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout

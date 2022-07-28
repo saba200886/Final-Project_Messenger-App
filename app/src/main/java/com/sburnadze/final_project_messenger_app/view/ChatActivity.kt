@@ -6,19 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
 import android.util.Log
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.sburnadze.final_project_messenger_app.ChatModel
 import com.sburnadze.final_project_messenger_app.IChatMainView
 import com.sburnadze.final_project_messenger_app.R
 import com.sburnadze.final_project_messenger_app.adapters.ChatListAdapter
 import com.sburnadze.final_project_messenger_app.model.ChatMessage
+import com.sburnadze.final_project_messenger_app.model.User
 import com.sburnadze.final_project_messenger_app.viewmodel.ChatViewModel
 
 class ChatActivity : AppCompatActivity(), IChatMainView {
@@ -30,6 +33,9 @@ class ChatActivity : AppCompatActivity(), IChatMainView {
     private lateinit var currId: String
     private lateinit var secondId: String
     private lateinit var image: ImageView
+    private lateinit var chatName: TextView
+    private lateinit var chatProfession: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +69,36 @@ class ChatActivity : AppCompatActivity(), IChatMainView {
             editText.setText("")
         }
 
+        chatName = findViewById(R.id.chat_username)
+        chatProfession = findViewById(R.id.chat_what_i_do)
+        showChatUser()
     }
+
+    private fun showChatUser(){
+        val users = Firebase.database.getReference("users")
+
+        users.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach{
+                    val currentUser = it.getValue(User::class.java) as User
+                    if(currentUser.id == secondId){
+                        chatName.text = currentUser.name.toString()
+                        chatProfession.text = currentUser.profession.toString()
+
+                        return
+                    }
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Search Error", "Error occurred in finding user", error.toException())
+            }
+
+        })
+    }
+
 
     private fun showMessages(){
         image = findViewById(R.id.image)
